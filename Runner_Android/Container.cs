@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace PogoDoodle_Mono_Android
 {
-    [Activity(Label = "StickManTAF", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Runner", MainLauncher = true, Icon = "@drawable/icon")]
     public class Container : AndroidGameActivity
     {
 
