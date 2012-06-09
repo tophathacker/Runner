@@ -1,0 +1,3 @@
+[submodule "MonoGame.Framework"]
+	path = MonoGame.Framework
+	url = https://github.com/tophathacker/MonoGame

@@ -40,6 +40,9 @@ namespace Runner
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            countDown = new TimeSpan(0, 2, 0);
+            nextTime = 2;
+            TouchPanel.EnabledGestures = GestureType.DoubleTap & GestureType.Tap;
             base.Initialize();
         }
 
@@ -74,12 +77,29 @@ namespace Runner
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.Help))
+                run = !run;
             if (run)
             {
                 if (countDown > TimeSpan.Zero)
                 {
                     countDown -= gameTime.ElapsedGameTime;
                 }
+                if (countDown == TimeSpan.Zero)
+                {
+                    if (nextTime == 2)
+                    {
+                        countDown = new TimeSpan(0, 2, 0);
+                        nextTime = 1;
+                    }
+                    else
+                    {
+                        countDown = new TimeSpan(0, 1, 0);
+                        nextTime = 2;
+
+                    }
+                }
+
             }
             TouchCollection touchState = TouchPanel.GetState();
             while (TouchPanel.IsGestureAvailable)
@@ -88,16 +108,15 @@ namespace Runner
                 switch (gesture.GestureType)
                 {
                     case GestureType.DoubleTap:
-
+                        run = !run;
                         break;
                     case GestureType.Tap:
-
+                        run = !run;
                         break;
                 }
             }
             foreach (TouchLocation location in touchState)
             {
-                run = !run;
             }
             // TODO: Add your update logic here
 
