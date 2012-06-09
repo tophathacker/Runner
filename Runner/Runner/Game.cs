@@ -20,7 +20,6 @@ namespace Runner
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont font;
-        string input;
         bool run;
         int nextTime;
         TimeSpan countDown;
